@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ctaExternalLinkProps } from "../constants/cta.js";
 
 const base =
   "inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold leading-snug transition-colors sm:px-7 sm:py-3 sm:text-base md:px-8 md:py-4 md:text-lg";
@@ -11,7 +12,7 @@ const variants = {
 export default function CTAButton({ variant = "primary", children, className = "" }) {
   return (
     <motion.a
-      href="#"
+      {...ctaExternalLinkProps}
       className={`${variants[variant]} ${className} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-neon)]`}
       whileHover={{
         scale: 1.03,
