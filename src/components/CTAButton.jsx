@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ctaExternalLinkProps } from "../constants/cta.js";
+import { trackCtaClick } from "../lib/analytics.js";
 
 const base =
   "inline-flex min-h-[44px] items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold leading-snug transition-colors sm:px-7 sm:py-3 sm:text-base md:px-8 md:py-4 md:text-lg";
@@ -9,11 +10,26 @@ const variants = {
   secondary: `${base} border border-[var(--color-neon)] bg-transparent text-[var(--color-neon)] hover:bg-[rgba(0,247,125,0.08)]`,
 };
 
-export default function CTAButton({ variant = "primary", children, className = "" }) {
+export default function CTAButton({
+  variant = "primary",
+  children,
+  className = "",
+  analyticsLabel,
+  analyticsLocation,
+  onClick,
+}) {
+  const label =
+    analyticsLabel ??
+    (typeof children === "string" ? children : undefined);
+
   return (
     <motion.a
       {...ctaExternalLinkProps}
       className={`${variants[variant]} ${className} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-neon)]`}
+      onClick={(e) => {
+        trackCtaClick({ label, location: analyticsLocation });
+        onClick?.(e);
+      }}
       whileHover={{
         scale: 1.03,
         boxShadow: "0 0 28px rgba(0, 247, 125, 0.45)",

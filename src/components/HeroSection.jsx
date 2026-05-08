@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CTAButton from "./CTAButton.jsx";
 import { ctaExternalLinkProps } from "../constants/cta.js";
+import { trackCtaClick } from "../lib/analytics.js";
 
 import heroPc from "../assets/images/hero-pc.png";
 import heroMobile from "../assets/images/hero-mobile.png";
@@ -99,7 +100,12 @@ export default function HeroSection() {
               }}
               className="w-full sm:w-auto"
             >
-              <CTAButton variant={cta.variant} className="w-full sm:w-auto">
+              <CTAButton
+                variant={cta.variant}
+                className="w-full sm:w-auto"
+                analyticsLabel={cta.label}
+                analyticsLocation="hero"
+              >
                 {cta.label}
               </CTAButton>
             </motion.div>
@@ -114,6 +120,9 @@ export default function HeroSection() {
             <a
               {...ctaExternalLinkProps}
               className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border-0 bg-transparent px-3 py-2 text-center text-base font-bold text-[#e4e6f0] shadow-none outline-none ring-0 sm:w-auto sm:justify-start sm:px-2 sm:text-lg"
+              onClick={() =>
+                trackCtaClick({ label: "크리에이터세요?", location: "hero" })
+              }
             >
               크리에이터세요?
             </a>

@@ -38,7 +38,13 @@ export default function FinalCTASection() {
         >
           {ctas.map((cta) => (
             <motion.div key={cta.label} variants={staggerItem}>
-              <CTAButton variant={cta.variant}>{cta.label}</CTAButton>
+              <CTAButton
+                variant={cta.variant}
+                analyticsLabel={cta.label}
+                analyticsLocation="final_cta"
+              >
+                {cta.label}
+              </CTAButton>
             </motion.div>
           ))}
         </motion.div>
