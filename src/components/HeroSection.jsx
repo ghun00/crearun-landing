@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CTAButton from "./CTAButton.jsx";
+import { ctaExternalLinkProps } from "../constants/cta.js";
 
 import heroPc from "../assets/images/hero-pc.png";
 import heroMobile from "../assets/images/hero-mobile.png";
@@ -81,7 +82,7 @@ export default function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="mt-8 flex max-w-xl flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4 lg:mt-10"
+          className="mt-8 flex max-w-xl flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 lg:mt-10"
           initial="hidden"
           animate="visible"
           variants={{
@@ -103,6 +104,20 @@ export default function HeroSection() {
               </CTAButton>
             </motion.div>
           ))}
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 16 },
+              visible: { opacity: 1, y: 0 },
+            }}
+            className="w-full basis-full lg:hidden sm:w-auto"
+          >
+            <a
+              {...ctaExternalLinkProps}
+              className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border-0 bg-transparent px-3 py-2 text-center text-base font-bold text-[#e4e6f0] shadow-none outline-none ring-0 sm:w-auto sm:justify-start sm:px-2 sm:text-lg"
+            >
+              크리에이터세요?
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
