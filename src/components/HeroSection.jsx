@@ -42,7 +42,7 @@ export default function HeroSection() {
         aria-hidden
       />
 
-      <div className="relative mx-auto flex min-h-screen min-h-dvh max-w-[1440px] flex-col justify-end px-5 pb-14 pt-28 sm:px-6 sm:pb-16 lg:justify-center lg:px-[120px] lg:pb-24 lg:pt-32">
+      <div className="relative mx-auto flex min-h-screen min-h-dvh max-w-[1440px] flex-col justify-end px-5 pb-7 pt-28 sm:px-6 sm:pb-8 lg:justify-center lg:px-[120px] lg:pb-24 lg:pt-32">
         <motion.div
           className="max-w-xl lg:max-w-2xl"
           initial={{ opacity: 0, y: 32 }}
